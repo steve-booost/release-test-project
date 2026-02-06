@@ -1,0 +1,17 @@
+name: Rollback Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      task-definition-revision:
+        description: 'Task definition revision number to rollback to'
+        required: true
+        type: string
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    environment: production 
+    steps:
+      - name: Rollback deploy
+        run: echo "Imagine this rolled back an ECS deployment"
