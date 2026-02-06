@@ -1,0 +1,24 @@
+name: Deploy to Production
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build image
+      run: echo "Imagine this built a docker image and pushed it to ECR"
+
+  deploy-production:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: 
+      name: production
+      url: https://myapp.com
+    steps:
+      - name: Deploy to ECS
+        run: echo "Imagine this deployed to ECS"
